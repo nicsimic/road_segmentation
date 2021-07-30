@@ -1,3 +1,25 @@
+Code for the simple U-Net model. Randomness is fixed so results are reproducibie every time.
+Model training assumes the dataset is unzipped as the way it is done in the tutorial, specifically in this hierarchy:
+
+|--> test_images
+|    |--> test_images
+|         |--> test_7.png
+|         |--> test_8.png
+|         |--> ...
+|
+|--> training
+|    |--> groundtruth
+|    |    |--> satImage_001.png
+|    |    |--> satImage_002.png
+|    |    |--> ...
+|    |
+|    |--> images
+|         |--> satImage_001.png
+|         |--> satImage_002.png
+|         |--> ...
+|
+|--> U-Net_simple.py
+
 Run as:
 python U-Net_simple.py //
        n_epochs=<int> //
