@@ -1,0 +1,2 @@
+The Notebook can easily be run through Colab.
+The only requirement is that the cil-road-segmentation-2021.zip given through the competition and the toronto_light.zip from out repository be located in a folder "road_segmentation" on the drive that runs the Colab Notebook.
