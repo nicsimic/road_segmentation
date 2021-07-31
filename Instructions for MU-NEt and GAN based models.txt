@@ -1,0 +1,16 @@
+1. Unzip "Leon_directory.zip"
+2. Copy the Leon_directory onto the Leonhard Cluster
+3. Run the script.sh to load the necessary python modules and submit the python file to the batch system.
+4. This doesn't always seem to work correctly. If the job is not submitted, just type 
+	bsub -o output -n 4 -R "rusage[mem=40000, ngpus_excl_p=1]" "python mu_net_composite_wgan.py"
+   In the console and press enter, the job should run then.
+5. After the imports and the fixing of randomness (The code still seems to be somewhat random, we don't know why), there are a few parameters that can be changed.
+	AUGMENT = True means that the dataset will be augmented according to what was written in our paper. This will multiply the data set size by nine, so jobs will take a lot longer with this option enabled.
+	NORMALIZE = True normalizes images with respect to their mean and STD.
+	SMOOTH = True smoothes the ground truth segmentations somewhat.
+	M_NOISE = True puts a small Gaussian Noise over the ground truth Segmentations.
+	
+	GENERATOR_EPOCHS sets how many epochs the Generator will be trained by itself
+	DISCRIMINATOR_EPOCHS sets how many epochs the Discriminator will be trained by itself
+	GAN_EPOCHS sets how many epochs the Generator and Discriminatro will be trained together
+6. The mu_net_composite_wgan_70x0x0_Sigmoid uses a Sigmoid function on the last layer instead of a Tanh one and was used to generate the pure MU-Net score in the paper to show that it's not significantly worse than the regular U-Net. When not using the MU-Net for GAN training, Sigmoid seems to perform better than Tanh.
